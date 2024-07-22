@@ -11,8 +11,8 @@ const uri = 'mongodb+srv://minhloc2802:Saikikusuo333@cluster0.budz48r.mongodb.ne
 
 // Require syntax is needed for JSON file imports
 const require = createRequire(import.meta.url);
-const isDev = process.env.DFX_NETWORK !== 'ic';
-// const isDev = false;
+// const isDev = process.env.DFX_NETWORK !== 'ic';
+const isDev = false;
 let localCanisterIds;
 if (isDev) {
   localCanisterIds = require('../../.dfx/local/canister_ids.json');
@@ -31,8 +31,8 @@ const effectiveCanisterId1 = canisterId?.toString()
 
 const agent = new HttpAgent({
   identity: await identity,
-  // host: 'https://icp-api.io',
-  host: 'http://127.0.0.1:4943',
+  host: 'https://icp-api.io',
+  // host: 'http://127.0.0.1:4943',
   fetch,
   timeout: 30000,
 });
@@ -74,7 +74,7 @@ async function withRetry(fn, retries = 5, delay = 1000, backoffFactor = 2) {
   }
 }
 
-const db = client.db('ICPDev');
+const db = client.db('ICP');
 const collection = db.collection('CKX');
 const collection0 = db.collection('CKX0');
 const collection1 = db.collection('CKX1');
